@@ -11,6 +11,7 @@ class SinglyLinkedList{
         this.tail = null;
         this.length = 0;
     }
+
     push(val){
         var newNode = new Node(val);
         if(!this.head){
@@ -59,13 +60,15 @@ class SinglyLinkedList{
             console.log(current);
     }
 
-    //removing a node from the begining of a linked list
-    // shift()
+    
+    // shifting ---- shift()
+    // removing a node from the begining of a linked list
+
     // sudocode
     // if there are no nodes, return undefined
     // store the current head property in a variable
     // set the head property to be the current head's next property
-    //making sure that head and tail are emptied when the last item is removed
+    // making sure that head and tail are emptied when the last item is removed
     // decrement the length by 1
 
   
@@ -79,6 +82,33 @@ class SinglyLinkedList{
         }
         this.length--;
         return currentHead;
+    }
+
+
+    // Unshifting
+    // adding a new node to the beginning of the linked list
+
+    //sudocode
+    //function should accept a value
+    //create a new node using th evalue passed to the function
+    // if there is no head property on the list, set the head and tail to be the newly created 
+    // <--node
+    // Otherwise set the newly created node's next property to be the current head property on the list
+    // set the head property on the list to be that newly creted node
+    // increment the length of the list by 1
+    // return the linked list
+
+    unshift(value){
+        var newNode = new Node(value);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = this.head;
+        } else{
+            newNode.next = this.head;
+            this.head = newNode;
+            this.length++;
+            return this;
+        }
     }
 
 }
@@ -103,3 +133,8 @@ list.push("!");
 // console.log(list.shift());
 // console.log(list);
 
+list.unshift('adding');
+list.unshift('another');
+list.unshift('one');
+console.log(list);
+console.log(list.SinglyLinkedList);
