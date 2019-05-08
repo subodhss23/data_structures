@@ -1,6 +1,6 @@
 class Node{
-    constructor(value){
-        this.value = value;
+    constructor(val){
+        this.val = val;
         this.next = null;
     }
 }
@@ -11,20 +11,18 @@ class SinglyLinkedList{
         this.tail = null;
         this.length = 0;
     }
-
-    push(value){
-        var newNode = new Node(value);
-        if (!this.head){
+    push(val){
+        var newNode = new Node(val);
+        if(!this.head){
             this.head = newNode;
             this.tail = this.head;
         } else {
             this.tail.next = newNode;
             this.tail = newNode;
         }
-        this.size++;
+        this.length++;
         return this;
     }
-
     // traverse(){
     //     var current = this.head;
     //     while(current){
@@ -43,17 +41,21 @@ class SinglyLinkedList{
     // return the value of the node removed
 
     pop(){
-            if(!this.head) return undefined;   // or this.tail instead of this.head, this.size can be checked if it is empty or null
+            if(!this.head) return undefined;   // or this.tail instead of this.head, this.length can be checked if it is empty or null
             var current = this.head;
             var newTail = current;
-            while (current.next){
+            while(current.next){
                 newTail = current;
                 current = current.next;
             }
             this.tail = newTail;
             this.tail.next = null;
             this.length--;
-            return current;
+            if(this.length === 0){   //making sure that head and tail are emptied when the last item are poped
+                this.head = null;
+                this.tail = null;
+            }
+            console.log(current);
     }
 }
 
@@ -61,8 +63,12 @@ var list = new SinglyLinkedList();
 list.push("Hi ");
 list.push("there ");
 list.push("!");
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
+list.pop();
+console.log(list);
+list.pop();
+console.log(list);
+list.pop();
+console.log(list);
+list.pop();
 
 
