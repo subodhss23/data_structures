@@ -111,6 +111,38 @@ class SinglyLinkedList{
             return this;
     }
 
+    // this function should accept an index
+    // if ther index is less than zero of greater than or equal to 
+    // the length of the list, return null
+    // loop through the list until you reac the index and 
+    // return the node at the specific index
+
+    get(index){
+        if(index < 0 || index >= this.length) return null;
+        var counter = 0;
+        var current = this.head;
+        while(counter !== index){
+            current = current.next;
+            counter++;
+        }
+
+        return current;
+    }
+
+    // set:- changing the value of a node based on it's position in th linked list
+    // this function should accept index and value
+    // use your get function to find the specific node
+    // if the node is not found, return false
+    // if the node is found, set the value of that node to be the value passed to the 
+    // function and return true
+    set (index, val){
+        var foundNode = this.get(index);
+        if(foundNode){
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
 }
 
 var list = new SinglyLinkedList();
@@ -138,3 +170,5 @@ list.unshift('another');
 list.unshift('one');
 console.log(list);
 console.log(list.SinglyLinkedList);
+
+console.log(list.get(0));
