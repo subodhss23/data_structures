@@ -135,7 +135,7 @@ class SinglyLinkedList{
     // if the node is not found, return false
     // if the node is found, set the value of that node to be the value passed to the 
     // function and return true
-    set (index, val){
+    set(index, val){
         var foundNode = this.get(index);
         if(foundNode){
             foundNode.val = val;
@@ -143,32 +143,34 @@ class SinglyLinkedList{
         }
         return false;
     }
+
+   // insert
+   // if the index is less than zero or greater than the length, return false
+   // if the index is the same as the lenght, push a new node to the end of the list
+   // if the index is 0, use unshift method (unshift a new node to the start of the list)
+   // otherwise, using the get method, access the node at the index -1
+    // set the next property on that node to be the new node
+    // set the next property on the new node to be the previous next
+    // increment the length
+    // return true
+    insert(index, val){
+        if(index < 0 || index > this.length) return false;
+        if(index === this.length){
+             this.push(val);
+             return true;
+        }
+        if(index === 0) return this.unshift(val);
+        var newNode = new Node(val);
+        var prev = this.get(index - 1);
+        var temp = prev.next;
+        prev.next = newNode;
+        newNode.next = temp;
+        this.length++;
+        return true;
+    }
 }
 
 var list = new SinglyLinkedList();
 list.push("Hi ");
 list.push("there ");
 list.push("!");
-
-// pop operation
-// list.pop();
-// console.log(list);
-// list.pop();
-// console.log(list);
-// list.pop();
-// console.log(list);
-// list.pop();
-
-//shift operation
-// console.log(list.shift());
-// console.log(list.shift());
-// console.log(list.shift());
-// console.log(list);
-
-list.unshift('adding');
-list.unshift('another');
-list.unshift('one');
-console.log(list);
-console.log(list.SinglyLinkedList);
-
-console.log(list.get(0));
