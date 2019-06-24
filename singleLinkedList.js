@@ -189,6 +189,46 @@ class SinglyLinkedList{
         this.length--;
         return removed;
     }
+
+    //prints console.logs all the values of linkedlist in an array
+    print(){
+        var arr = [];
+        var current = this.head;
+        while(current){
+            arr.push(current.val);
+            current = current.next;
+        }
+        console.log(arr);
+    }
+
+    //reverse
+    //reversing the linked list in place
+    //**** how to reverse a single linked list *****/
+
+    //reverse pseudocode
+    //swap the head and tail
+    // create a variable called next
+    // create a variable called prev
+    // create a variable called node and initialize it to the head property
+    // loop through the list
+    // set next to be the next property on whatever node is
+    // set prev to be the value of the node variable
+    // set the node variable to the value of the next variable
+    reverse(){
+        var node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        var next;
+        var prev = null;
+
+        for(var i = 0; i < this.length; i++){
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
+    }
 }
 
 var list = new SinglyLinkedList();
